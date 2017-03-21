@@ -15,7 +15,8 @@ app.showTab = function (tab, tabLink, animated, force) {
     if (typeof animated === 'undefined') animated = true;
     if (newTab.length === 0) return false;
     if (newTab.hasClass('active')) {
-        if (force) newTab.trigger('show tab:show');
+        if (force)  { newTab.trigger('show tab:show'); }
+		  else { newTab.trigger('clicked'); }
         return false;
     }
     var tabs = newTab.parent('.tabs');

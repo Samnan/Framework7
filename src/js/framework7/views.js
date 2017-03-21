@@ -166,7 +166,8 @@ var View = function (selector, params) {
         el;
 
     view.handleTouchStart = function (e) {
-        if (!allowViewTouchMove || !view.params.swipeBackPage || isTouched || app.swipeoutOpenedEl || !view.allowPageChange) return;
+        if (!allowViewTouchMove || !view.params.swipeBackPage || isTouched || app.swipeoutOpenedEl || !view.allowPageChange
+			  || view.history.length < 2) return;
         isMoved = false;
         isTouched = true;
         isScrolling = undefined;
@@ -446,9 +447,9 @@ var View = function (selector, params) {
     };
 
     // Init
-    if (view.params.swipeBackPage && !app.params.material) {
+    //if (view.params.swipeBackPage && !app.params.material) {
         view.attachEvents();
-    }
+    //}
 
     // Check view name to delete unwanted characters
     if (view.params.name) view.params.name = view.params.name.replace(/[^a-zA-Z]/g, '');
